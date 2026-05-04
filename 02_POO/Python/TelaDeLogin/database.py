@@ -1,6 +1,6 @@
 import datetime 
 
-class Database:
+class DataBase:
     def __init__(self, file_name):
         self.file_name = file_name
         self.users = None
@@ -25,7 +25,7 @@ class Database:
         
     def add_user(self, user, password, email):
         if email.strip() not in self.users:
-            self.users[email.strip()] = (password.strip(), user.strip(), Database.get_date())
+            self.users[email.strip()] = (password.strip(), user.strip(), DataBase.get_date())
             self.save()
             return 1
         else:
@@ -34,7 +34,7 @@ class Database:
         
     def validate(self, email, password):
         if self.get_user(email) != -1:
-            return self.user[email][0] == password
+            return self.users[email][0] == password
         else:
             return False
     
